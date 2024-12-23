@@ -13,6 +13,10 @@ jobs:
     steps:
       - name: Style
         run: (test -z $(go fmt ./...))
+      - name: Install staticccheck
+        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+      - name: StaticCheck
+        run: (staticccheck ./...)
 
   tests:
     name: Tests
