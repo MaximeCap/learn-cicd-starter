@@ -16,7 +16,7 @@ jobs:
       - name: Install staticccheck
         run: go install honnef.co/go/tools/cmd/staticcheck@latest
       - name: StaticCheck
-        run: (staticccheck ./...)
+        run: (staticcheck ./...)
 
   tests:
     name: Tests
