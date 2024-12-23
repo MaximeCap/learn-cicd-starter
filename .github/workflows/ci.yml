@@ -18,7 +18,7 @@ jobs:
           go install honnef.co/go/tools/cmd/staticcheck@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: StaticCheck
-        run: (staticcheck ./...)
+        run: (staticcheck .)
 
   tests:
     name: Tests
