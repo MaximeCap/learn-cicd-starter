@@ -14,9 +14,11 @@ jobs:
       - name: Style
         run: (test -z $(go fmt ./...))
       - name: Install staticccheck
-        run: go install honnef.co/go/tools/cmd/staticcheck@latest
+        run: |
+          go install honnef.co/go/tools/cmd/staticcheck@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
       - name: StaticCheck
-        run: (staticccheck ./...)
+        run: (staticcheck .)
 
   tests:
     name: Tests
@@ -33,3 +35,8 @@ jobs:
 
       - name: Run tests...
         run: (go test ./... -cover)
+
+      - name: Install gosec
+        run: go install github.com/securego/gosec/v2/cmd/gosec@latest
+      - name: gosec
+        run: gosec .
