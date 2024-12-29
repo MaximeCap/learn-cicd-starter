@@ -21,4 +21,4 @@ jobs:
 
       - name: Build prod
         run: |
-          ../../scripts/buildprod.sh
+          ./scripts/buildprod.sh
